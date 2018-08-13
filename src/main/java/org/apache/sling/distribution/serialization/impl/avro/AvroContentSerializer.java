@@ -18,7 +18,6 @@
  */
 package org.apache.sling.distribution.serialization.impl.avro;
 
-import javax.annotation.Nonnull;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -33,7 +32,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.avro.Schema;
 import org.apache.avro.file.DataFileReader;
 import org.apache.avro.file.DataFileWriter;
@@ -53,6 +51,7 @@ import org.apache.sling.distribution.common.DistributionException;
 import org.apache.sling.distribution.serialization.DistributionContentSerializer;
 import org.apache.sling.distribution.serialization.DistributionExportFilter;
 import org.apache.sling.distribution.serialization.DistributionExportOptions;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -181,7 +180,7 @@ public class AvroContentSerializer implements DistributionContentSerializer {
         return avroResources;
     }
 
-    private void persistResource(@Nonnull ResourceResolver resourceResolver, AvroShallowResource r) throws PersistenceException {
+    private void persistResource(@NotNull ResourceResolver resourceResolver, AvroShallowResource r) throws PersistenceException {
         String path = r.getPath().toString().trim();
         String name = path.substring(path.lastIndexOf('/') + 1);
         String substring = path.substring(0, path.lastIndexOf('/'));
